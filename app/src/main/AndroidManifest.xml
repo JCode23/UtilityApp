@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dradtech.utilityapp">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- Permission required to draw floating widget over other apps -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Permission required to capture screenshot-->
+    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ShareActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".DialogMenu"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".SwipeBrightness"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.dradtech.searchclass.QuickSearch"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".BrightnessControlDialog"
+                  android:screenOrientation="portrait"></activity>
+
+        <!-- Declare FloatingWidget Service over here and set enabled true -->
+        <service
+            android:name=".FloatingWidgetService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- For Device Admin Receiver -->
+        <receiver
+            android:name=".DarClass"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/my_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name="com.dradtech.screenshotclass.ScreenShot"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="com.dradtech.screenshotclass.TestScreenshot"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name="com.dradtech.screenshotclass.Test01Screenshot"
+                  android:screenOrientation="portrait"></activity>
+        <activity android:name=".TestBrightness"
+                  android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>
